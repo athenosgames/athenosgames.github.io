@@ -1,1 +1,318 @@
-"hello from github pages!" - athenos
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Athenos Games LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d0d10;
+    --paper:#f4f2ec;
+    --blue:#0085ff;
+    --blue-dim:#0a3a66;
+    --orange:#ff7a1a;
+    --orange-dim:#5a2e0f;
+    --line: rgba(244,242,236,0.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Space Grotesk', sans-serif;}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 40px;
+    background:var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  nav .brand{font-size:1.1rem; font-weight:700; letter-spacing:0.02em;}
+  nav .brand span{color:var(--orange);}
+  nav .links{display:flex; gap:32px;}
+  nav .links a{color:var(--paper); text-decoration:none; font-size:0.85rem; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.08em; opacity:0.75; transition:opacity 0.2s;}
+  nav .links a:hover{opacity:1;}
+
+  /* HERO - split seam, flat colors */
+  .hero{
+    position:relative;
+    height:100vh;
+    min-height:640px;
+    display:flex;
+    overflow:hidden;
+    margin-top:65px;
+  }
+  .hero-half{
+    flex:1;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:60px;
+    transition: flex 0.4s ease;
+    cursor:pointer;
+  }
+  .hero-half.left{
+    background:var(--blue-dim);
+    border-right:1px solid var(--line);
+  }
+  .hero-half.right{
+    background:var(--orange-dim);
+  }
+  .hero-half:hover{ flex:1.15; }
+  .hero-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    opacity:0.8;
+    margin-bottom:14px;
+  }
+  .hero-half.left .hero-tag{color:var(--blue);}
+  .hero-half.right .hero-tag{color:var(--orange);}
+  .hero-title{
+    font-size:clamp(2rem, 5vw, 3.4rem);
+    font-weight:700;
+    line-height:1.02;
+    margin-bottom:16px;
+  }
+  .hero-desc{
+    max-width:420px;
+    font-size:1rem;
+    color:rgba(244,242,236,0.75);
+    line-height:1.5;
+    margin-bottom:28px;
+  }
+  .hero-cta{
+    display:inline-flex; align-items:center; gap:10px;
+    width:fit-content;
+    padding:14px 24px;
+    border-radius:4px;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+  }
+  .hero-half.left .hero-cta{ background:var(--blue); color:#03101f; }
+  .hero-half.right .hero-cta{ background:var(--orange); color:#1f0d02; }
+
+  .seam{
+    position:absolute;
+    top:0; bottom:0; left:50%;
+    width:1px;
+    background:var(--line);
+    z-index:5;
+    pointer-events:none;
+  }
+
+  .scroll-hint{
+    position:absolute;
+    bottom:24px; left:50%; transform:translateX(-50%);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    opacity:0.4;
+    z-index:6;
+  }
+
+  /* STUDIO STRIP */
+  .studio{
+    padding:90px 40px;
+    max-width:900px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .studio .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.75rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--orange);
+    margin-bottom:20px;
+    display:block;
+  }
+  .studio h2{
+    font-size:clamp(1.6rem, 3.4vw, 2.4rem);
+    line-height:1.35;
+    font-weight:600;
+    color:rgba(244,242,236,0.92);
+  }
+  .studio h2 b{ color:var(--paper); font-weight:700; }
+
+  /* GAME SECTIONS - flat */
+  .game{
+    position:relative;
+    padding:120px 40px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+    border-top:1px solid var(--line);
+  }
+  .game.rechat{ background:var(--ink); }
+  .game.otag{ background:var(--ink); }
+
+  .game-media{
+    aspect-ratio:16/11;
+    border-radius:4px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--line);
+  }
+  .rechat .game-media{ background:var(--blue-dim); }
+  .otag .game-media{ background:var(--orange-dim); }
+
+  .glyph{
+    font-size:5rem;
+    z-index:2;
+  }
+
+  .game-body .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+    display:inline-block;
+    padding:6px 14px;
+    border-radius:4px;
+    border:1px solid var(--line);
+  }
+  .rechat .tag{ color:var(--blue); border-color:var(--blue-dim); }
+  .otag .tag{ color:var(--orange); border-color:var(--orange-dim); }
+
+  .game-body h3{
+    font-size:clamp(1.8rem, 3.4vw, 2.6rem);
+    margin-bottom:18px;
+  }
+  .game-body p{
+    color:rgba(244,242,236,0.7);
+    line-height:1.6;
+    margin-bottom:14px;
+    max-width:480px;
+  }
+  .specs{
+    display:flex; gap:28px; flex-wrap:wrap;
+    margin:24px 0 32px;
+  }
+  .specs div{ font-size:0.85rem; }
+  .specs .k{ font-family:'IBM Plex Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; opacity:0.5; display:block; margin-bottom:4px; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px;
+    border-radius:4px;
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+  }
+  .rechat .btn{ background:var(--blue); color:#03101f; }
+  .otag .btn{ background:var(--orange); color:#1f0d02; }
+
+  @media (max-width:860px){
+    .game{ grid-template-columns:1fr; padding:80px 24px; }
+    .hero{ flex-direction:column; }
+    .hero-half{ padding:36px; }
+    .seam{ display:none; }
+    nav{ padding:18px 20px; }
+    nav .links{ gap:18px; }
+  }
+
+  footer{
+    padding:60px 40px 40px;
+    text-align:center;
+    border-top:1px solid var(--line);
+  }
+  footer .brand{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:8px; }
+  footer .brand span{ color:var(--orange); }
+  footer p{ font-size:0.8rem; color:rgba(244,242,236,0.4); font-family:'IBM Plex Mono',monospace; letter-spacing:0.04em; }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-half{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">ATHENOS <span>GAMES</span></div>
+  <div class="links">
+    <a href="#rechat">ReChat</a>
+    <a href="#otag">Orangutan Tag</a>
+    <a href="#studio">Studio</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <a href="#rechat" class="hero-half left" style="text-decoration:none; color:inherit;">
+    <span class="hero-tag">Social VR</span>
+    <h1 class="hero-title">ReChat</h1>
+    <p class="hero-desc">A place to hang out that never logged off. Rooms, friends, and a radio that's always on.</p>
+    <span class="hero-cta">Explore ReChat →</span>
+  </a>
+  <a href="#otag" class="hero-half right" style="text-decoration:none; color:inherit;">
+    <span class="hero-tag">Gorilla Tag Fangame</span>
+    <h1 class="hero-title">Orangutan Tag</h1>
+    <p class="hero-desc">Same jungle, sharper claws. A tag game built for players who never stopped climbing.</p>
+    <span class="hero-cta">Explore Orangutan Tag →</span>
+  </a>
+  <div class="seam"></div>
+  <div class="scroll-hint">Scroll ↓</div>
+</section>
+
+<section class="studio" id="studio">
+  <span class="eyebrow">Athenos Games LLC</span>
+  <h2>We build <b>worlds you move through</b>, not menus you click past — two studios' worth of ambition under one roof: a social VR platform and a jungle built for chasing.</h2>
+</section>
+
+<section class="game rechat" id="rechat">
+  <div class="game-media">
+    <div class="glyph">🛰️</div>
+  </div>
+  <div class="game-body">
+    <span class="tag">Social VR · Quest</span>
+    <h3>ReChat</h3>
+    <p>Drop into rooms built by the community, catch up with friends, and keep a radio station running in the background of it all. ReChat is the hangout that treats persistence as a feature, not an afterthought.</p>
+    <div class="specs">
+      <div><span class="k">Platform</span>Meta Quest</div>
+      <div><span class="k">Genre</span>Social / Sandbox</div>
+      <div><span class="k">Status</span>Early Beta</div>
+    </div>
+    <a class="btn" href="https://cdn.rechatvr.com/downloads/rechat-quest.apk">Download ReChat (.apk) ↓</a>
+  </div>
+</section>
+
+<section class="game otag" id="otag">
+  <div class="game-media">
+    <div class="glyph">🍊</div>
+  </div>
+  <div class="game-body">
+    <span class="tag">Fangame · Quest</span>
+    <h3>Orangutan Tag</h3>
+    <p>A love letter to the Gorilla Tag community, reimagined with a new troop. Climb, swing, and chase across maps built for players who know exactly what a good tag map feels like.</p>
+    <div class="specs">
+      <div><span class="k">Platform</span>Meta Quest</div>
+      <div><span class="k">Genre</span>Movement / Multiplayer</div>
+      <div><span class="k">Status</span>Live</div>
+    </div>
+    <a class="btn" href="https://otag.ht.otisdub.com">Download Orangutan Tag ↓</a>
+  </div>
+</section>
+
+<footer>
+  <div class="brand">ATHENOS <span>GAMES</span> LLC</div>
+  <p>© 2026 Athenos Games LLC — Built for headsets, not desktops.</p>
+</footer>
+
+</body>
+</html>
