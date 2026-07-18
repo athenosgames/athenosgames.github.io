@@ -74,6 +74,7 @@
     margin-bottom: auto; /* Pushes the text content to the bottom */
     align-self: center; /* Centers the logo horizontally */
     transition: transform 0.4s ease;
+    border-radius: 8px; /* Added a slight curve in case the jpg edges are harsh */
   }
   .hero-half:hover .hero-logo{
     transform: scale(1.05);
@@ -183,9 +184,7 @@
   }
   .rechat .game-media{ background:var(--blue-dim); }
   .otag .game-media{ background:var(--orange-dim); }
-  .game-media img { max-width: 80%; height: auto; }
-
-  .glyph{ font-size:5rem; }
+  .game-media img { max-width: 80%; height: auto; border-radius: 4px; }
 
   .game-body .tag{
     font-family:'IBM Plex Mono', monospace;
@@ -272,6 +271,7 @@
     <span class="hero-cta">Explore ReChat →</span>
   </a>
   <a href="#otag" class="hero-half right" style="text-decoration:none; color:inherit;">
+    <img src="assets/orangutantag.jpg" alt="Orangutan Tag Logo" class="hero-logo">
     <span class="hero-tag">Gorilla Tag Fangame</span>
     <h1 class="hero-title">Orangutan Tag</h1>
     <p class="hero-desc">Same jungle, sharper claws. A tag game built for players who never stopped climbing.</p>
@@ -305,7 +305,7 @@
 
 <section class="game otag" id="otag">
   <div class="game-media">
-    <div class="glyph">🍊</div>
+    <img src="assets/orangutantag.jpg" alt="Orangutan Tag Logo">
   </div>
   <div class="game-body">
     <span class="tag">Fangame · Quest</span>
