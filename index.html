@@ -66,6 +66,19 @@
     background:var(--orange-dim);
   }
   .hero-half:hover{ flex:1.15; }
+  
+  .hero-logo{
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    margin-bottom: auto; /* Pushes the text content to the bottom */
+    align-self: center; /* Centers the logo horizontally */
+    transition: transform 0.4s ease;
+  }
+  .hero-half:hover .hero-logo{
+    transform: scale(1.05);
+  }
+
   .hero-tag{
     font-family:'IBM Plex Mono', monospace;
     font-size:0.75rem;
@@ -252,6 +265,7 @@
 
 <section class="hero">
   <a href="#rechat" class="hero-half left" style="text-decoration:none; color:inherit;">
+    <img src="assets/full-logo.png" alt="ReChat Logo" class="hero-logo">
     <span class="hero-tag">Social VR</span>
     <h1 class="hero-title">ReChat</h1>
     <p class="hero-desc">A place to hang out that never logged off. Rooms, friends, and a radio that's always on.</p>
