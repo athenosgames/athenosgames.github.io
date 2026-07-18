@@ -30,12 +30,11 @@
   nav{
     position:fixed; top:0; left:0; right:0; z-index:100;
     display:flex; justify-content:space-between; align-items:center;
-    padding:22px 40px;
+    padding:16px 40px;
     background:var(--ink);
     border-bottom:1px solid var(--line);
   }
-  nav .brand{font-size:1.1rem; font-weight:700; letter-spacing:0.02em;}
-  nav .brand span{color:var(--orange);}
+  nav .brand-img{ height:32px; width:auto; border-radius:4px; }
   nav .links{display:flex; gap:32px;}
   nav .links a{color:var(--paper); text-decoration:none; font-size:0.85rem; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:0.08em; opacity:0.75; transition:opacity 0.2s;}
   nav .links a:hover{opacity:1;}
@@ -144,7 +143,6 @@
     font-weight:600;
     color:rgba(244,242,236,0.92);
   }
-  .studio h2 b{ color:var(--paper); font-weight:700; }
 
   /* GAME SECTIONS - flat */
   .game{
@@ -168,14 +166,13 @@
     align-items:center;
     justify-content:center;
     border:1px solid var(--line);
+    padding:20px;
   }
   .rechat .game-media{ background:var(--blue-dim); }
   .otag .game-media{ background:var(--orange-dim); }
+  .game-media img { max-width: 80%; height: auto; }
 
-  .glyph{
-    font-size:5rem;
-    z-index:2;
-  }
+  .glyph{ font-size:5rem; }
 
   .game-body .tag{
     font-family:'IBM Plex Mono', monospace;
@@ -245,7 +242,7 @@
 <body>
 
 <nav>
-  <div class="brand">ATHENOS <span>GAMES</span></div>
+  <img src="assets/athenosgames.jpg" alt="Athenos Games" class="brand-img">
   <div class="links">
     <a href="#rechat">ReChat</a>
     <a href="#otag">Orangutan Tag</a>
@@ -272,12 +269,12 @@
 
 <section class="studio" id="studio">
   <span class="eyebrow">Athenos Games LLC</span>
-  <h2>We build <b>worlds you move through</b>, not menus you click past — two studios' worth of ambition under one roof: a social VR platform and a jungle built for chasing.</h2>
+  <h2>For everyone, by everyone</h2>
 </section>
 
 <section class="game rechat" id="rechat">
   <div class="game-media">
-    <div class="glyph">🛰️</div>
+    <img src="assets/full-logo.png" alt="ReChat Logo">
   </div>
   <div class="game-body">
     <span class="tag">Social VR · Quest</span>
@@ -288,7 +285,7 @@
       <div><span class="k">Genre</span>Social / Sandbox</div>
       <div><span class="k">Status</span>Early Beta</div>
     </div>
-    <a class="btn" href="https://cdn.rechatvr.com/downloads/rechat-quest.apk">Download ReChat (.apk) ↓</a>
+    <a class="btn" href="https://github.com/otisdub/otisdub/blob/main/How%20To%20Install%20ReChat.md">Install ReChat (Guide) →</a>
   </div>
 </section>
 
