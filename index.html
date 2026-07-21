@@ -36,15 +36,24 @@
 }
 </script>
 
+    <!-- Preconnect for fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Asynchronous font loading to prevent render blocking -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+    </noscript>
+
     <style>
         :root{
             --ink:#0d0d10;
             --paper:#f4f2ec;
-            --blue:#0085ff;
+            /* Lightened accent colors to pass WCAG contrast checks */
+            --blue:#339dff; 
             --blue-dim:#0a3a66;
-            --orange:#ff7a1a;
+            --orange:#ff8e3d; 
             --orange-dim:#5a2e0f;
             --line: rgba(244,242,236,0.14);
         }
@@ -281,7 +290,8 @@
 <body>
 
 <nav>
-    <img src="assets/athenosgames.jpg" alt="Athenos Games" class="brand-img">
+    <!-- Explicit dimensions to prevent CLS -->
+    <img src="assets/athenosgames.jpg" alt="Athenos Games" class="brand-img" width="56" height="56">
     <div class="links">
         <a href="#rechat">ReChat</a>
         <a href="#otag">Orangutan Tag</a>
@@ -290,63 +300,70 @@
     </div>
 </nav>
 
-<section class="hero">
-    <a href="#rechat" class="hero-half left" style="text-decoration:none; color:inherit;">
-        <img src="assets/full-logo.png" alt="ReChat Logo" class="hero-logo">
-        <span class="hero-tag">Social VR</span>
-        <h1 class="hero-title">ReChat</h1>
-        <p class="hero-desc">A place to hang out that never logged off. Rooms, friends, and a radio that's always on.</p>
-        <span class="hero-cta">Explore ReChat →</span>
-    </a>
-    <a href="#otag" class="hero-half right" style="text-decoration:none; color:inherit;">
-        <img src="assets/orangutantag.jpg" alt="Orangutan Tag Logo" class="hero-logo">
-        <span class="hero-tag">Gorilla Tag Fangame</span>
-        <h1 class="hero-title">Orangutan Tag</h1>
-        <p class="hero-desc">Same jungle, sharper claws. A tag game built for players who never stopped climbing.</p>
-        <span class="hero-cta">Explore Orangutan Tag →</span>
-    </a>
-    <div class="seam"></div>
-    <div class="scroll-hint">Scroll ↓</div>
-</section>
+<!-- Added a semantic <main> tag to resolve accessibility warning -->
+<main>
+    <section class="hero">
+        <a href="#rechat" class="hero-half left" style="text-decoration:none; color:inherit;">
+            <!-- Added fetchpriority for LCP and explicit dimensions -->
+            <img src="assets/full-logo.png" alt="ReChat Logo" class="hero-logo" width="525" height="394" fetchpriority="high">
+            <span class="hero-tag">Social VR</span>
+            <h1 class="hero-title">ReChat</h1>
+            <p class="hero-desc">A place to hang out that never logged off. Rooms, friends, and a radio that's always on.</p>
+            <span class="hero-cta">Explore ReChat →</span>
+        </a>
+        <a href="#otag" class="hero-half right" style="text-decoration:none; color:inherit;">
+            <!-- Added fetchpriority for LCP and explicit dimensions -->
+            <img src="assets/orangutantag.jpg" alt="Orangutan Tag Logo" class="hero-logo" width="525" height="295" fetchpriority="high">
+            <span class="hero-tag">Gorilla Tag Fangame</span>
+            <h1 class="hero-title">Orangutan Tag</h1>
+            <p class="hero-desc">Same jungle, sharper claws. A tag game built for players who never stopped climbing.</p>
+            <span class="hero-cta">Explore Orangutan Tag →</span>
+        </a>
+        <div class="seam"></div>
+        <div class="scroll-hint">Scroll ↓</div>
+    </section>
 
-<section class="studio" id="studio">
-    <span class="eyebrow">Athenos Games LLC</span>
-    <h2>For everyone, by everyone</h2>
-</section>
+    <section class="studio" id="studio">
+        <span class="eyebrow">Athenos Games LLC</span>
+        <h2>For everyone, by everyone</h2>
+    </section>
 
-<section class="game rechat" id="rechat">
-    <div class="game-media">
-        <img src="assets/full-logo.png" alt="ReChat Logo">
-    </div>
-    <div class="game-body">
-        <span class="tag">Social VR - Meta Quest - PC - PCVR - Mobile (iOS)</span>
-        <h3>ReChat</h3>
-        <p>Drop into rooms built by the community, catch up with friends, and keep a radio station running in the background of it all. ReChat is the hangout that treats persistence as a feature, not an afterthought.</p>
-        <div class="specs">
-            <div><span class="k">Platforms</span>Meta Quest - PC - PCVR - Mobile (iOS)</div>
-            <div><span class="k">Genre</span>Social / Sandbox</div>
-            <div><span class="k">Status</span>Early Beta</div>
+    <section class="game rechat" id="rechat">
+        <div class="game-media">
+            <!-- Added lazy loading for offscreen images and explicit dimensions -->
+            <img src="assets/full-logo.png" alt="ReChat Logo" width="525" height="394" loading="lazy">
         </div>
-        <a class="btn" href="https://github.com/otisdub/otisdub/blob/main/How%20To%20Install%20ReChat.md">Install ReChat (Guide) →</a>
-    </div>
-</section>
-
-<section class="game otag" id="otag">
-    <div class="game-media">
-        <img src="assets/orangutantag.jpg" alt="Orangutan Tag Logo">
-    </div>
-    <div class="game-body">
-        <span class="tag">Fangame · Quest</span>
-        <h3>Orangutan Tag</h3>
-        <p>A love letter to the Gorilla Tag community, reimagined with a new troop. Climb, swing, and chase across maps built for players who know exactly what a good tag map feels like.</p>
-        <div class="specs">
-            <div><span class="k">Platform</span>Meta Quest</div>
-            <div><span class="k">Genre</span>Movement / Multiplayer</div>
-            <div><span class="k">Status</span>Live</div>
+        <div class="game-body">
+            <span class="tag">Social VR - Meta Quest - PC - PCVR - Mobile (iOS)</span>
+            <h3>ReChat</h3>
+            <p>Drop into rooms built by the community, catch up with friends, and keep a radio station running in the background of it all. ReChat is the hangout that treats persistence as a feature, not an afterthought.</p>
+            <div class="specs">
+                <div><span class="k">Platforms</span>Meta Quest - PC - PCVR - Mobile (iOS)</div>
+                <div><span class="k">Genre</span>Social / Sandbox</div>
+                <div><span class="k">Status</span>Early Beta</div>
+            </div>
+            <a class="btn" href="https://github.com/otisdub/otisdub/blob/main/How%20To%20Install%20ReChat.md">Install ReChat (Guide) →</a>
         </div>
-        <a class="btn" href="https://otag.ht.otisdub.com">Download Orangutan Tag ↓</a>
-    </div>
-</section>
+    </section>
+
+    <section class="game otag" id="otag">
+        <div class="game-media">
+            <!-- Added lazy loading for offscreen images and explicit dimensions -->
+            <img src="assets/orangutantag.jpg" alt="Orangutan Tag Logo" width="525" height="295" loading="lazy">
+        </div>
+        <div class="game-body">
+            <span class="tag">Fangame · Quest</span>
+            <h3>Orangutan Tag</h3>
+            <p>A love letter to the Gorilla Tag community, reimagined with a new troop. Climb, swing, and chase across maps built for players who know exactly what a good tag map feels like.</p>
+            <div class="specs">
+                <div><span class="k">Platform</span>Meta Quest</div>
+                <div><span class="k">Genre</span>Movement / Multiplayer</div>
+                <div><span class="k">Status</span>Live</div>
+            </div>
+            <a class="btn" href="https://otag.ht.otisdub.com">Download Orangutan Tag ↓</a>
+        </div>
+    </section>
+</main>
 
 <footer>
     <div class="brand">ATHENOS <span>GAMES</span> LLC</div>
