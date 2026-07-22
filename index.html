@@ -50,7 +50,6 @@
         :root{
             --ink:#0d0d10;
             --paper:#f4f2ec;
-            /* Lightened accent colors to pass WCAG contrast checks */
             --blue:#339dff; 
             --blue-dim:#0a3a66;
             --orange:#ff8e3d; 
@@ -282,16 +281,16 @@
         }
         footer .brand{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.1rem; margin-bottom:8px; }
         footer .brand span{ color:var(--orange); }
-        footer .contact-link { display: inline-block; margin-bottom: 16px; color: var(--paper); text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.8; transition: opacity 0.2s; }
-        footer .contact-link:hover { opacity: 1; }
+        footer .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 16px; flex-wrap: wrap; }
+        footer .contact-link, footer .footer-links a { color: var(--paper); text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; letter-spacing: 0.05em; opacity: 0.8; transition: opacity 0.2s; }
+        footer .contact-link:hover, footer .footer-links a:hover { opacity: 1; }
         footer p{ font-size:0.8rem; color:rgba(244,242,236,0.4); font-family:'IBM Plex Mono',monospace; letter-spacing:0.04em; }
     </style>
 </head>
 <body>
 
 <nav>
-    <!-- Explicit dimensions to prevent CLS -->
-    <img src="assets/athenosgames.jpg" alt="Athenos Games" class="brand-img" width="56" height="56">
+    <img src="https://athenos.pl/assets/athenosgames.jpg" alt="Athenos Games" class="brand-img" width="56" height="56">
     <div class="links">
         <a href="#rechat">ReChat</a>
         <a href="#otag">Orangutan Tag</a>
@@ -300,11 +299,9 @@
     </div>
 </nav>
 
-<!-- Added a semantic <main> tag to resolve accessibility warning -->
 <main>
     <section class="hero">
         <a href="#rechat" class="hero-half left" style="text-decoration:none; color:inherit;">
-            <!-- Added fetchpriority for LCP and explicit dimensions -->
             <img src="assets/full-logo.png" alt="ReChat Logo" class="hero-logo" width="525" height="394" fetchpriority="high">
             <span class="hero-tag">Social VR</span>
             <h1 class="hero-title">ReChat</h1>
@@ -312,7 +309,6 @@
             <span class="hero-cta">Explore ReChat →</span>
         </a>
         <a href="#otag" class="hero-half right" style="text-decoration:none; color:inherit;">
-            <!-- Added fetchpriority for LCP and explicit dimensions -->
             <img src="assets/orangutantag.jpg" alt="Orangutan Tag Logo" class="hero-logo" width="525" height="295" fetchpriority="high">
             <span class="hero-tag">Gorilla Tag Fangame</span>
             <h1 class="hero-title">Orangutan Tag</h1>
@@ -330,7 +326,6 @@
 
     <section class="game rechat" id="rechat">
         <div class="game-media">
-            <!-- Added lazy loading for offscreen images and explicit dimensions -->
             <img src="assets/full-logo.png" alt="ReChat Logo" width="525" height="394" loading="lazy">
         </div>
         <div class="game-body">
@@ -348,7 +343,6 @@
 
     <section class="game otag" id="otag">
         <div class="game-media">
-            <!-- Added lazy loading for offscreen images and explicit dimensions -->
             <img src="assets/orangutantag.jpg" alt="Orangutan Tag Logo" width="525" height="295" loading="lazy">
         </div>
         <div class="game-body">
@@ -367,7 +361,10 @@
 
 <footer>
     <div class="brand">ATHENOS <span>GAMES</span> LLC</div>
-    <a href="mailto:contact@athenos.pl" class="contact-link">contact@athenos.pl</a>
+    <div class="footer-links">
+        <a href="mailto:contact@athenos.pl" class="contact-link">contact@athenos.pl</a>
+        <a href="/privacy">Privacy Policy</a>
+    </div>
     <p>© 2026 Athenos Games LLC — For Everyone, By Everyone.</p>
 </footer>
 
